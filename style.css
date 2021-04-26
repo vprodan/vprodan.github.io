@@ -23,8 +23,8 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-    background: var(--secondary-text-color);
     border-radius: 4px;
+    background: var(--secondary-text-color);
 }
 
 ::-webkit-scrollbar-thumb:hover {
@@ -51,6 +51,14 @@ body {
 .column {
     flex: 0 0 50%;
     max-width: 50%;
+}
+
+.column:first-child {
+    margin-right: 10px;
+}
+
+.column:last-child {
+    margin-left: 10px;
 }
 
 span:not(:last-child) {
