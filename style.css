@@ -18,6 +18,10 @@ body {
     margin: 0;
 }
 
+*, ::after, ::before {
+    box-sizing: border-box;
+}
+
 ::-webkit-scrollbar-track {
     background-color: var(--secondary-color);
 }
@@ -72,6 +76,10 @@ ul {
 
 li {
     font-size: 12px;
+}
+
+table {
+    table-layout: fixed;
 }
 
 a, a:visited {
@@ -144,6 +152,7 @@ h5 {
 }
 
 .header td:first-child {
+    width: 1em;
     padding: 0;
     text-align: center;
 }
@@ -197,7 +206,6 @@ h5 {
 
 .skills {
     width: 100%;
-    table-layout: fixed;
 }
 
 .skills tr.sub td:first-child {
@@ -243,4 +251,31 @@ h5 {
 
 .skills tr td:last-child {
     color: var(--primary-color);
+}
+
+@media (max-width: 600px) {
+    .header .info table {
+        margin: 0;
+    }
+
+    .header img {
+        width: 64px;
+        height: 64px;
+        margin-top: auto;
+        margin-left: auto;
+    }
+
+    .header .info {
+        flex-direction: column;
+    }
+
+    .wrapper {
+        flex-wrap: wrap;
+        padding: 20px 20px;
+    }
+
+    .column {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
 }
