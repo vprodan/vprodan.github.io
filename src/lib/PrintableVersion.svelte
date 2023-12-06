@@ -1,5 +1,5 @@
 <div class="no-print">
-  <button type="button" on:click={() => print()}>
+  <button type="button" on:click={() => window.print()}>
     <i class="fas fa-print"></i>
     <span>Printable Version</span>
   </button>
