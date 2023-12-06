@@ -73,17 +73,25 @@
         <HobbyList items={$data.hobbies} />
       </Section>
     </div>
+    <footer class="no-print">
+      <a href="https://github.com/vprodan/vprodan.github.io">&copy; 2023 <strong>Vadim Prodan</strong></a>
+    </footer>
   </main>
+
 {:else if longLoadingDetected}
   <Loading />
 {/if}
 
 <style lang="scss">
   main {
-    display: flex;
     color: var(--bg-color);
     border-top: 4px solid var(--primary-color);
     background-color: var(--secondary-color);
+  }
+
+  footer {
+    padding: .5em;
+    text-align: center;
   }
 
   .container {
