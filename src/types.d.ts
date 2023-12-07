@@ -12,7 +12,6 @@ export interface Contact {
   icon: string
   label: string
   url: string
-  type: string
 }
 
 export interface Education {

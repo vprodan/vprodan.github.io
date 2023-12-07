@@ -40,7 +40,7 @@
           <a href={item.url} target="_blank" class="no-print"
             >{item.label} <i class="fas fa-up-right-from-square"></i></a
           >
-          <strong class="print">{item.type}:</strong>
+          <strong class="print">{item.label}:</strong>
           <span class="print">{item.url}</span>
         </li>
       {/each}
