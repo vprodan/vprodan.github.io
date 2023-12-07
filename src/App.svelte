@@ -74,10 +74,11 @@
       </Section>
     </div>
     <footer class="no-print">
-      <a href="https://github.com/vprodan/vprodan.github.io">&copy; 2023 <strong>Vadim Prodan</strong></a>
+      <a href="https://github.com/vprodan/vprodan.github.io"
+        >&copy; 2023 <strong>Vadim Prodan</strong></a
+      >
     </footer>
   </main>
-
 {:else if longLoadingDetected}
   <Loading />
 {/if}
@@ -90,7 +91,7 @@
   }
 
   footer {
-    padding: .5em;
+    padding: 0.5em;
     text-align: center;
   }
 
