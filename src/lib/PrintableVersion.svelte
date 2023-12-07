@@ -17,6 +17,7 @@
     font-size: 0.875rem;
     font-weight: bold;
     margin: 0.4rem auto;
+    color: var(--primary-text-color);
 
     &:hover span {
       text-decoration: underline;
