@@ -51,16 +51,18 @@
   onMount(() => {
     if (window.hasOwnProperty('IntersectionObserver')) {
       const rootElement = document.documentElement
+      const rootStyles = getComputedStyle(rootElement)
+      const themeColor = rootElement.querySelector('meta[name=theme-color]')
+
       observer = new IntersectionObserver((entries) => {
-        const bgColorVar = entries[0].isIntersecting
+        const colorVar = entries[0].isIntersecting
           ? '--bg-color'
           : '--secondary-color'
+        const color = rootStyles.getPropertyValue(colorVar)
 
-        console.log(entries[0].isIntersecting)
+        console.log(color)
 
-        requestAnimationFrame(
-          () => (rootElement.style.backgroundColor = `var(${bgColorVar})`),
-        )
+        requestAnimationFrame(() => themeColor?.setAttribute('content', color))
       })
 
       return () => header && observer.unobserve(header)
