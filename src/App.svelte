@@ -47,6 +47,7 @@
   let header: any
   let observer: IntersectionObserver
   let observed = false
+  const isSafari = /safari/i.test(navigator.userAgent)
 
   onMount(() => {
     if (window.hasOwnProperty('IntersectionObserver')) {
@@ -60,7 +61,16 @@
           : '--secondary-color'
         const color = rootStyles.getPropertyValue(colorVar)
 
-        requestAnimationFrame(() => themeColor?.setAttribute('content', color))
+        requestAnimationFrame(() => {
+          themeColor?.setAttribute('content', color)
+
+          if (!isSafari) {
+            rootElement.style.setProperty(
+              'background-color',
+              `var(${colorVar})`,
+            )
+          }
+        })
       })
 
       return () => header && observer.unobserve(header)
