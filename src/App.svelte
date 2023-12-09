@@ -47,7 +47,9 @@
   let header: any
   let observer: IntersectionObserver
   let observed = false
-  const isSafari = /safari/i.test(navigator.userAgent)
+  const isSafariMobile = /(?:iPhone|iPad|iPod).*safari/i.test(
+    navigator.userAgent,
+  )
 
   onMount(() => {
     if (window.hasOwnProperty('IntersectionObserver')) {
@@ -64,7 +66,7 @@
         requestAnimationFrame(() => {
           themeColor?.setAttribute('content', color)
 
-          if (!isSafari) {
+          if (!isSafariMobile) {
             rootElement.style.setProperty(
               'background-color',
               `var(${colorVar})`,
