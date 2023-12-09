@@ -17,6 +17,7 @@
   import DurationPlugin from 'dayjs/plugin/duration'
   import CustomParseFormatPlugin from 'dayjs/plugin/customParseFormat'
   import { writable } from 'svelte/store'
+  import { onMount, afterUpdate } from 'svelte'
 
   dayjs.extend(DurationPlugin)
   dayjs.extend(CustomParseFormatPlugin)
@@ -42,10 +43,40 @@
 
   let longLoadingDetected = false
   setTimeout(() => (longLoadingDetected = true), 500)
+
+  let header: any
+  let observer: IntersectionObserver
+  let observed = false
+
+  onMount(() => {
+    if (window.hasOwnProperty('IntersectionObserver')) {
+      const rootElement = document.documentElement
+      observer = new IntersectionObserver((entries) => {
+        const bgColorVar = entries[0].isIntersecting
+          ? '--bg-color'
+          : '--secondary-color'
+
+        console.log(entries[0].isIntersecting)
+
+        requestAnimationFrame(
+          () => (rootElement.style.backgroundColor = `var(${bgColorVar})`),
+        )
+      })
+
+      return () => header && observer.unobserve(header)
+    }
+  })
+
+  afterUpdate(() => {
+    if (!observed && observer && header) {
+      observer.observe(header)
+      observed = true
+    }
+  })
 </script>
 
 {#if $data}
-  <header>
+  <header bind:this={header}>
     <PrintableVersion />
     <PersonalInfo data={$data.personalInfo} />
   </header>
@@ -84,6 +115,10 @@
 {/if}
 
 <style lang="scss">
+  header {
+    background-color: var(--bg-color);
+  }
+
   main {
     color: var(--bg-color);
     border-top: 4px solid var(--primary-color);
