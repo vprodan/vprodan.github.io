@@ -60,8 +60,6 @@
           : '--secondary-color'
         const color = rootStyles.getPropertyValue(colorVar)
 
-        console.log(color)
-
         requestAnimationFrame(() => themeColor?.setAttribute('content', color))
       })
 
