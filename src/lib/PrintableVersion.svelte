@@ -1,5 +1,15 @@
+<script lang="ts">
+  function print() {
+    try {
+      document.execCommand('print')
+    } catch (e) {
+      window.print()
+    }
+  }
+</script>
+
 <div class="no-print">
-  <button type="button" on:click={() => window.print()}>
+  <button type="button" on:click={print}>
     <i class="fas fa-print"></i>
     <span>Printable Version</span>
   </button>
