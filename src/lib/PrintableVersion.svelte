@@ -1,9 +1,15 @@
 <script lang="ts">
   function print() {
+    const isSafari = /safari/i.test(navigator.userAgent)
+
     try {
-      document.execCommand('print')
-    } catch (e) {
-      window.print()
+      if (isSafari) {
+        document.execCommand('print')
+      } else {
+        window.print()
+      }
+    } catch (e: any) {
+      alert(`Fatal Error: ${e.message}`)
     }
   }
 </script>
