@@ -101,6 +101,10 @@
   }
 
   @media print {
+    header {
+      margin-bottom: .75rem;
+    }
+
     article ul {
       grid-template-rows: auto;
       grid-auto-flow: unset;
